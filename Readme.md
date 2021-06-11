@@ -23,7 +23,7 @@ Since DeeProtGO was developed to learn new annotations gained during a time gap,
 
 **Note**: All the results generated in this section are provided in data/intermediate and data/processed directories.
 
-The [data preparation notebook]https://drive.google.com/file/d/1uZeYf6geBsn9OqJy5hwv2VSj-Rix2k2z/view?usp=sharing) is provided with instructions to build all input and output data required for training DeeProtGO for predicting BP terms for NK proteins and for testing it with CAFA3 benchmark proteins. Doing so may take several hours. 
+The [data preparation notebook](https://drive.google.com/file/d/1uZeYf6geBsn9OqJy5hwv2VSj-Rix2k2z/view?usp=sharing) is provided with instructions to build all input and output data required for training DeeProtGO for predicting BP terms for NK proteins and for testing it with CAFA3 benchmark proteins. Doing so may take several hours. 
 
 
 ## 3. Model training
@@ -54,14 +54,6 @@ Protein function prediction
 │   │ 
 │   ├── intermediate -> Intermediate files generated during training and benchmark datasets preparation. 
 │   │   │
-│   │   ├── LevDist_negProteins.tab               -> Edit distance of negative and positive proteins of the training set.
-│   │   │
-│   │   ├── LevDist_negProteinsBenchTrain.tab     -> Edit distance of negative proteins of the benchmark set with positive
-│   │   │                                            proteins of the training set.
-│   │   ├── LevDist_posProteins.tab               -> Edit distance between positive proteins of the training set.
-│   │   │
-│   │   ├── LevDist_posProteinsBenchTrain.tab     ->  Edit distance of prositive proteins of the benchmark set with positive
-│   │   │                                            proteins of the training set.
 │   │   ├── propAnnot_Bench_Euka_BP.tab           -> Propagated GO annotations gained between $t_0$ and $t_1$ for benchmark 
 │   │   │                                            proteins.   
 │   │   └── propAnnot_Train_Euka_BP.tab           -> Propagated GO annotations gained between $t_{-1}$ and $t_0$ for training 
@@ -84,16 +76,14 @@ Protein function prediction
 │   │   │       
 │   │   └── Training   -> Data used for training DeeProtGO to predict GO BP terms of  NK proteins from eukarya organisms.
 │   │           │
-│   │           ├── Emb_BP_Euka.h5                      -> SeqVec embeddings.
-│   │           │
-│   │           ├── GOTermsNetPropagatedNK_Euka_BP.tab  -> Proteins sequences obtained from .
+│   │           ├── dataPreparation.sh                  -> Bash script for downloading proteins similarity file and 
+│   │           │                                          uncompressing *tar.gz files
+│   │           ├── Emb_BP_Euka.h5.tar.gz               -> SeqVec embeddings.
 │   │           │
 │   │           ├── GOTermsPropRel_Euka_BP_train.tab    -> One-hot encoding of relationships between GO terms, used for scores │   │           │                                          propagation.
-│   │           ├── LevSim_BP_Euka.h5                   -> Proteins similarity based on edit distance.
-│   │           │
 │   │           ├── NegEntries_Euka_BP.tab              -> UniProt entries of negative proteins.
 │   │           │
-│   │           ├── netOut_BP_Euka.h5                   -> One-hot encoding matrix representing GO BP terms of benchmark
+│   │           ├── netOut_BP_Euka.h5.tar.gz            -> One-hot encoding matrix representing GO BP terms of training
 │   │           │                                           proteins.
 │   │           ├── PosEntries_Euka_BP.tab              -> UniProt entries of positive proteins.
 │   │           │
@@ -110,9 +100,7 @@ Protein function prediction
 │   │
 │   └── train_NK_EUKA_BP       -> Files obtained during training of DeeProtGO for predicting BP terms of NK proteins
 │       │                                           
-│       ├── DeeProtGO_PSD_Emb_Taxon_Euka_BP_NK.pt    -> Trained DeeProtGO model.
-│       │                                           
-│       ├── PSD_Emb_Taxoncheckpoint.pt               -> Last DeeProtGO model obtained during training.
+│       ├── modelPreparation.sh                      -> Bash script for downlading a pre-trained DeeProtGO model.
 │       │                                           
 │       ├── test_13052021.log                        -> DeeProtGO performance on test partition of the training dataset.
 │       │                                            
