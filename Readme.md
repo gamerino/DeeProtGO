@@ -1,16 +1,46 @@
 # Predicting protein functions using DeeProtGO
 
-This readme contains a detailed example of a case-of-use of `DeeProtGO`, a deep learning model for automatic function prediction  by integrating protein knowledge from multiple databases.
+This repository contains the full source code and a detailed example of a case-of-use of `DeeProtGO`, a deep learning model for automatic function prediction by integrating protein knowledge from multiple databases.
 
-**G.A. Merino, R. Saidi, D.H. Milone, G. Stegmayer, M. Martin. *Hierarchical deep learning for predicting GO annotations by integrating heterogeneous protein knowledge*, XXX, 2021,.**
+The following sections contain the steps and the libraries used in each of them. All datasets and libraries are open sourced and free to use. If you use any of the following methods, please cite them properly:
 
-The following sections contain the steps and the libraries used in each of them. All datasets and libraries are open sourced and free to use. If you use any of the following in your pipelines, please cite them properly.
+**G.A. Merino, R. Saidi, D.H. Milone, G. Stegmayer, M. Martin. *Hierarchical deep learning for predicting GO annotations by integrating heterogeneous protein knowledge*, 2021.**
 
-## 1. Layout
+## 1. Introduction
 
-This worklfow describes the steps required to predict [GO](http://geneontology.org/) terms for proteins called *No-knowledge* (NK): Proteins that do not have experimental annotations in any of the GO sub-ontologies at a reference time, but have accumulated at least one GO term with an experimental evidence code during a growth period. 
-Data used for developing and evaluating the proposed models were obtained from different protein-knowledge databases, considering the proteins provided in the [CAFA3 challenge](https://www.biofunctionprediction.org/cafa/). For CAFA3, $t_{-1}$ is when the challenge was released (09/2016), in which the sets of training and target proteins were provided to the participants; $t_0$, the deadline for participants submissions of the predictions for the target proteins (02/2017); and $t_1$ is when benchmark proteins were collected for assessment (11/2017). Thus, the CAFA3 benchmark dataset is composed of those target proteins that have, at least, one new functional annotation added during the growth period between $t_0$ and $t_1$.
-Since DeeProtGO was developed to learn new annotations gained during a time gap, it is trained here with proteins that gained GO terms during the growth period defined between $t{-1}$ and $t_0$, and evaluated on NK proteins of the CAFA3 benchmark dataset.
+This workflow describes the steps required to predict [GO](http://geneontology.org/) terms for *No-knowledge* (NK) proteins, that is, without experimental annotations in any of the GO sub-ontologies at a reference time, but that have accumulated at least one GO term with an experimental evidence code during a growth period. 
+
+Data used for developing and evaluating the proposed models were obtained from different protein-knowledge databases, considering the proteins provided in the [CAFA3 challenge](https://www.biofunctionprediction.org/cafa/). The CAFA3 dates were considered:
+- $t_{-1}$ is when the challenge was released (09/2016), in which the sets of training and target proteins were provided to the participants; 
+- $t_0$, the deadline for participants submissions of the predictions for the target proteins (02/2017); and 
+- $t_1$ is when benchmark proteins were collected for assessment (11/2017). 
+Thus, the CAFA3 benchmark dataset is composed of those target proteins that have, at least, one new functional annotation added during the growth period between $t_0$ and $t_1$.
+
+Since DeeProtGO was developed to learn new annotations gained during a time gap, it is trained here with proteins that gained GO terms during the growth period defined between $t{-1}$ and $t_0$, and evaluated on NK proteins of the CAFA3 benchmark dataset (at $t_1$).
+
+
+## 2. Data preparation
+
+**Note**: All the results generated in this section are provided in data/intermediate and data/processed directories.
+
+The [data preparation notebook]https://drive.google.com/file/d/1uZeYf6geBsn9OqJy5hwv2VSj-Rix2k2z/view?usp=sharing) is provided with instructions to build all input and output data required for training DeeProtGO for predicting BP terms for NK proteins and for testing it with CAFA3 benchmark proteins. Doing so may take several hours. 
+
+
+## 3. Model training
+
+**Note**: All the results generated in this section are provided in the examples/train_NK_EUKA_BP directory.
+
+The [DeeProtGO training notebook](https://drive.google.com/file/d/1UwjkXnMB3Tte-8xR7AtgGjCAD_BIhiOQ/view?usp=sharing) is provided with all the steps required to train DeeProtGO for predicting BP terms for NK proteins.
+
+
+## 4. Model testing on CAFA3 benchmark
+
+The [DeeProtGO testing notebook](https://drive.google.com/file/d/1UwjkXnMB3Tte-8xR7AtgGjCAD_BIhiOQ/view?usp=sharing) is provided with all the steps required to evaluate DeeProtGO when predicting BP terms for NK proteins of eukarya organisms in the CAFA3 benchmark dataset.
+
+
+## 5. Repository organization
+
+The following scheme illustrates the organization of this repository and contains a detailed description of each folder and file.
 
 
 ```
@@ -32,9 +62,9 @@ Protein function prediction
 │   │   │
 │   │   ├── LevDist_posProteinsBenchTrain.tab     ->  Edit distance of prositive proteins of the benchmark set with positive
 │   │   │                                            proteins of the training set.
-│   │   ├── propAnnot_Bench_Euka_BP.tab           -> Propagated GO annotations gained between T_0 and T_1 for benchmark 
+│   │   ├── propAnnot_Bench_Euka_BP.tab           -> Propagated GO annotations gained between $t_0$ and $t_1$ for benchmark 
 │   │   │                                            proteins.   
-│   │   └── propAnnot_Train_Euka_BP.tab           -> Propagated GO annotations gained between T_{-1} and T_0 for training 
+│   │   └── propAnnot_Train_Euka_BP.tab           -> Propagated GO annotations gained between $t_{-1}$ and $t_0$ for training 
 │   │                                                proteins. 
 │   ├── processed    -> Datasets used for training and testing DeeProtGO when predicting annotations for NK proteins. 
 │   │   │
@@ -46,11 +76,11 @@ Protein function prediction
 │   │   │       │
 │   │   │       ├── NegEntries_Euka_BP.tab  -> UniProt entry names of negative proteins.
 │   │   │       │
-│   │   │       ├── netOut_BP_Euka.h5       -> One-hot enconding matrix representing GO BP terms of benchmark proteins.
+│   │   │       ├── netOut_BP_Euka.h5       -> One-hot encoding matrix representing GO BP terms of benchmark proteins.
 │   │   │       │
 │   │   │       ├── PosEntries_Euka_BP.tab  -> UniProt entry names of positive proteins.
 │   │   │       │
-│   │   │       └── Taxon_BP_Euka.h5        -> One-hot enconding matrix representing proteins taxon.
+│   │   │       └── Taxon_BP_Euka.h5        -> One-hot encoding matrix representing proteins taxon.
 │   │   │       
 │   │   └── Training   -> Data used for training DeeProtGO to predict GO BP terms of  NK proteins from eukarya organisms.
 │   │           │
@@ -58,16 +88,16 @@ Protein function prediction
 │   │           │
 │   │           ├── GOTermsNetPropagatedNK_Euka_BP.tab  -> Proteins sequences obtained from .
 │   │           │
-│   │           ├── GOTermsPropRel_Euka_BP_train.tab    -> One-hot enconding of relationships between GO terms, used for scores │   │           │                                          propagation.
+│   │           ├── GOTermsPropRel_Euka_BP_train.tab    -> One-hot encoding of relationships between GO terms, used for scores │   │           │                                          propagation.
 │   │           ├── LevSim_BP_Euka.h5                   -> Proteins similarity based on edit distance.
 │   │           │
 │   │           ├── NegEntries_Euka_BP.tab              -> UniProt entries of negative proteins.
 │   │           │
-│   │           ├── netOut_BP_Euka.h5                   -> One-hot enconding matrix representing GO BP terms of benchmark
+│   │           ├── netOut_BP_Euka.h5                   -> One-hot encoding matrix representing GO BP terms of benchmark
 │   │           │                                           proteins.
 │   │           ├── PosEntries_Euka_BP.tab              -> UniProt entries of positive proteins.
 │   │           │
-│   │           └── Taxon_BP_Euka.h5                    -> One-hot enconding matrix representing proteins taxon.
+│   │           └── Taxon_BP_Euka.h5                    -> One-hot encoding matrix representing proteins taxon.
 │   │
 │   └── raw  -> Metadata of training and benchmark proteins
 │       │
