@@ -134,26 +134,6 @@ Protein function prediction
 ```
 
 
-## 2. Data preparation
-
-**Note**: All the results generated in this section are provided in data/intermediate and data/processed directories.
-
-The [data preparation notebook](scripts/dataPreparation.ipynb) is provided with instructions to build all input and output data required for training DeeProtGO for predicting BP terms for NK proteins and for testing it with CAFA3 benchmark proteins. Doing so may take several hours. 
-
-
-## 3. Model training
-
-**Note**: All the results generated in this section are provided in the examples/train_NK_EUKA_BP directory.
-
-The [DeeProtGO training notebook](scripts/DeeProtGOTraning.ipynb) is provided with all the steps required to train DeeProtGO for predicting BP terms for NK proteins.
-
-
-## 4. Model testing on CAFA3 benchmark
-
-The [DeeProtGO testing notebook](scripts/DeeProtGOTesting.ipynb) is provided with all the steps required to evaluate DeeProtGO when predicting BP terms for NK proteins of eukarya organisms in the CAFA3 benchmark dataset.
-
-
-
 
 
 
