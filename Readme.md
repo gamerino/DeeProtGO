@@ -80,7 +80,8 @@ Protein function prediction
 │   │           │                                          uncompressing *tar.gz files
 │   │           ├── Emb_BP_Euka.h5.tar.gz               -> SeqVec embeddings.
 │   │           │
-│   │           ├── GOTermsPropRel_Euka_BP_train.tab    -> One-hot encoding of relationships between GO terms, used for scores │   │           │                                          propagation.
+│   │           ├── GOTermsPropRel_Euka_BP_train.tab    -> One-hot encoding of relationships between GO terms, used for scores
+│   │           │                                          propagation.
 │   │           ├── NegEntries_Euka_BP.tab              -> UniProt entries of negative proteins.
 │   │           │
 │   │           ├── netOut_BP_Euka.h5.tar.gz            -> One-hot encoding matrix representing GO BP terms of training
