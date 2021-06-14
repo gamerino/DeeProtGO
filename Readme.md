@@ -54,9 +54,9 @@ Protein function prediction
 │   │ 
 │   ├── intermediate -> Intermediate files generated during training and benchmark datasets preparation. 
 │   │   │
-│   │   ├── propAnnot_Bench_Euka_BP.tab           -> Propagated GO annotations gained between  *t*<sub>0</sub> and  *t*<sub>1</sub> for benchmark 
+│   │   ├── propAnnot_Bench_Euka_BP.tab           -> Propagated GO annotations gained between  t0 and  t1 for benchmark 
 │   │   │                                            proteins.   
-│   │   └── propAnnot_Train_Euka_BP.tab           -> Propagated GO annotations gained between  *t*<sub>-1</sub> and  *t*<sub>0</sub> for training 
+│   │   └── propAnnot_Train_Euka_BP.tab           -> Propagated GO annotations gained between  t-1 and  t0 for training 
 │   │                                                proteins. 
 │   ├── processed    -> Datasets used for training and testing DeeProtGO when predicting annotations for NK proteins. 
 │   │   │
