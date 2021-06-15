@@ -13,7 +13,7 @@ This workflow describes the steps required to predict [GO](http://geneontology.o
 Data used for developing and evaluating the proposed models were obtained from different protein-knowledge databases, considering the proteins provided in the [CAFA3 challenge](https://www.biofunctionprediction.org/cafa/). The CAFA3 dates were considered:
 -  *t*<sub>-1</sub> is when the challenge was released (09/2016), in which the sets of training and target proteins were provided to the participants; 
 -  *t*<sub>0</sub>, the deadline for participants submissions of the predictions for the target proteins (02/2017); and 
--  *t*<sub>1</sub> is when benchmark proteins were collected for assessment (11/2017). 
+-  *t*<sub>1</sub> is when the annotations for benchmark proteins were collected for assessment (11/2017). 
 Thus, the CAFA3 benchmark dataset is composed of those target proteins that have, at least, one new functional annotation added during the growth period between  *t*<sub>0</sub> and  *t*<sub>1</sub>.
 
 Since DeeProtGO was developed to learn new annotations gained during a time gap, it is trained here with proteins that gained GO terms during the growth period defined between *t*<sub>-1</sub>  and  *t*<sub>0</sub>, and evaluated on NK proteins of the CAFA3 benchmark dataset (at  *t*<sub>1</sub>).
@@ -21,17 +21,15 @@ Since DeeProtGO was developed to learn new annotations gained during a time gap,
 
 ## 2. Data preparation
 
-**Note**: All the results generated in this section are provided in data/intermediate and data/processed directories.
+All the data required for training and testing DeeProtGO to predict BP terms for NK proteins is already provided in the [data](https://github.com/gamerino/DeeProtGO/tree/master/data) folder.  
 
-The [data preparation notebook](https://colab.research.google.com/drive/1uZeYf6geBsn9OqJy5hwv2VSj-Rix2k2z?authuser=1) is provided with instructions to build all input and output data required for training DeeProtGO for predicting BP terms for NK proteins and for testing it with CAFA3 benchmark proteins. Doing so may take several hours. 
-
+**Note**: If you want to replicate the procedure, you can follow the instructions in the [data preparation notebook](https://colab.research.google.com/drive/1uZeYf6geBsn9OqJy5hwv2VSj-Rix2k2z?authuser=1). Doing so may take several hours.
 
 ## 3. Model training
 
-**Note**: All the results generated in this section are provided in the examples/train_NK_EUKA_BP directory.
-
 The [DeeProtGO training notebook](https://colab.research.google.com/drive/1UwjkXnMB3Tte-8xR7AtgGjCAD_BIhiOQ?authuser=1) is provided with all the steps required to train DeeProtGO for predicting BP terms for NK proteins.
 
+**Note**: All the results generated in this section are provided in the examples/train_NK_EUKA_BP directory.
 
 ## 4. Model testing on CAFA3 benchmark
 
@@ -110,7 +108,7 @@ Protein function prediction
 │       └── valid_13052021.log                       -> DeeProtGO performance on validation partition of the training dataset.
 |					     
 │
-├── scripts         -> Files obtained when running the DeeProtGO example provided here
+├── scripts         -> Python scripts for data preparation, model fitting and evaluation
 │   │
 │   ├── dataPreparation.ipynb      -> Python notebook for preparing the data for training and testing DeeProtGO
 │   │
