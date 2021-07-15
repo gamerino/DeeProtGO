@@ -23,17 +23,17 @@ Since DeeProtGO was developed to learn new annotations gained during a time gap,
 
 All the data required for training and testing DeeProtGO to predict BP terms for NK proteins is already provided in the [data](https://github.com/gamerino/DeeProtGO/tree/master/data) folder.  
 
-**Note**: If you want to replicate the procedure, you can follow the instructions in the [data preparation notebook](https://colab.research.google.com/drive/1uZeYf6geBsn9OqJy5hwv2VSj-Rix2k2z?authuser=1). Doing so may take several hours.
+**Note**: If you want to replicate the procedure, you can follow the instructions in the [data preparation notebook](https://colab.research.google.com/github/gamerino/DeeProtGO/blob/master/scripts/dataPreparation.ipynb). Doing so may take several hours.
 
 ## 3. Model training
 
-The [DeeProtGO training notebook](https://colab.research.google.com/drive/1UwjkXnMB3Tte-8xR7AtgGjCAD_BIhiOQ?authuser=1) is provided with all the steps required to train DeeProtGO for predicting BP terms for NK proteins.
+The [DeeProtGO training notebook](https://colab.research.google.com/github/gamerino/DeeProtGO/blob/master/scripts/DeeProtGOTraining.ipynb) is provided with all the steps required to train DeeProtGO for predicting BP terms for NK proteins.
 
 **Note**: All the results generated in this section are provided in the examples/train_NK_EUKA_BP directory.
 
 ## 4. Model testing on CAFA3 benchmark
 
-The [DeeProtGO testing notebook](https://colab.research.google.com/drive/1tKTGvc1MKFNe2bawfTm9aQdmx_a6iMAv?authuser=1) is provided with all the steps required to evaluate DeeProtGO when predicting BP terms for NK proteins of eukarya organisms in the CAFA3 benchmark dataset.
+The [DeeProtGO testing notebook](https://colab.research.google.com/github/gamerino/DeeProtGO/blob/master/scripts/DeeProtGOTesting.ipynb) is provided with all the steps required to evaluate DeeProtGO when predicting BP terms for NK proteins of eukarya organisms in the CAFA3 benchmark dataset.
 
 
 ## 5. Repository organization
