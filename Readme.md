@@ -4,8 +4,7 @@ This repository contains the full source code and a detailed example of a case-o
 
 The following sections contain the steps and the libraries used in each of them. All datasets and libraries are open sourced and free to use. If you use any of the following methods, please cite them properly:
 
-**Gabriela A Merino, Rabie Saidi, Diego H Milone, Georgina Stegmayer, Maria J Martin, Hierarchical deep learning for predicting GO annotations by integrating protein knowledge, Bioinformatics, Volume 38, Issue 19, 1 October 2022, Pages 4488–4496, https://doi.org/10.1093/bioinformatics/btac536
-**
+**Gabriela A Merino, Rabie Saidi, Diego H Milone, Georgina Stegmayer, Maria J Martin, Hierarchical deep learning for predicting GO annotations by integrating protein knowledge, Bioinformatics, Volume 38, Issue 19, 1 October 2022, Pages 4488–4496, https://doi.org/10.1093/bioinformatics/btac536**
 
 ## 1. Introduction
 
